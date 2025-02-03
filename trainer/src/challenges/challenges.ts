@@ -68,9 +68,10 @@ type Test2 = Expect<Equals<Challenge<number>, "not string">>;
 type NotTest1 = Expect<Not<Equals<Challenge<string>, "not string">>>;
 type NotTest2 = Expect<Not<Equals<Challenge<number>, "string">>>;`,
   `// Advanced Challenge 2: Mapped Types
-type Challenge<T> = {
-  [K in keyof T]: T[K] extends number ? "number" : "other";
-};
+// Hint: Use a mapped type to iterate over the keys of T and conditionally transform the values based on their type.
+// You can use conditional types to check if a type extends another type.
+
+type Challenge<T> = unknown;
 
 // Your task: Ensure the following conditions
 type Test1 = Expect<Equals<Challenge<{ a: number; b: string }>, { a: "number"; b: "other" }>>;
@@ -78,7 +79,8 @@ type Test2 = Expect<Equals<Challenge<{ x: boolean; y: number }>, { x: "other"; y
 type NotTest1 = Expect<Not<Equals<Challenge<{ a: number; b: string }>, { a: "other"; b: "number" }>>>;
 type NotTest2 = Expect<Not<Equals<Challenge<{ x: boolean; y: number }>, { x: "number"; y: "other" }>>>;`,
   `// Advanced Challenge 3: Recursive Types
-type Challenge<T> = T extends (infer U)[] ? Challenge<U> : T;
+// Hint: Use a recursive type to handle nested arrays. You can use conditional types to check if a type extends an array and then recursively extract the element type.
+type Challenge<T> = unknown;
 
 // Your task: Ensure the following conditions
 type Test1 = Expect<Equals<Challenge<number[]>, number>>;
