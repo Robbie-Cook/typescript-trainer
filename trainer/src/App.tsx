@@ -135,7 +135,7 @@ declare type Expect<T extends true> = T;
             onClick={() => {
               const nextIndex = (currentChallengeIndex + 1) % challenges.length;
               setCurrentChallengeIndex(nextIndex);
-              resetCodeToChallenge();
+              resetCodeToChallenge(nextIndex);
             }}
             className="p-2 bg-blue-600 hover:bg-blue-700 rounded"
           >
