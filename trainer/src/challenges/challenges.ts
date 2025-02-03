@@ -45,7 +45,6 @@ type Test = Expect<Equals<Challenge, { name: string; age?: number }>>;
 type NotTest = Expect<Not<Equals<Challenge, { name: string }>>>;`,
   `// Intermediate Challenge 2: Readonly Properties
 type Challenge = {
-  // Add readonly property id
   name: string;
 };
 
@@ -54,7 +53,6 @@ type Test = Expect<Equals<Challenge, { readonly id: number; name: string }>>;
 type NotTest = Expect<Not<Equals<Challenge, { name: string }>>>;`,
   `// Intermediate Challenge 3: Index Signatures
 type Challenge = {
-  // Add index signature
 };
 
 // Your task: Ensure the following conditions

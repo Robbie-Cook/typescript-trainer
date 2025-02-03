@@ -10,10 +10,7 @@ import { challenges } from "./challenges/challenges"; // Import challenges
 function App() {
   const monacoInstance = useMonaco();
   const [currentChallengeIndex, setCurrentChallengeIndex] = useState(0);
-  const [editors, setEditors] = useState([
-    { id: 1, code: challenges[0] },
-    { id: 2, code: "// type your code..." },
-  ]);
+  const [editors, setEditors] = useState([{ id: 1, code: challenges[0] }]);
   const [isChallengeCompleted, setIsChallengeCompleted] = useState(false);
 
   useEffect(() => {
@@ -120,7 +117,7 @@ declare type Not<T extends boolean> = T extends true ? false : true;
       />
       <div className="flex space-x-4">
         <button
-          onClick={resetCodeToChallenge}
+          onClick={() => resetCodeToChallenge(currentChallengeIndex)}
           className="p-2 bg-red-600 hover:bg-red-700 rounded"
         >
           Reset
