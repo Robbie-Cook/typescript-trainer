@@ -36,7 +36,7 @@ type Test = Expect<Equals<Challenge, { title: string; tags: string[] }>>;
   `// Intermediate Challenge 1: Optional Properties
 type Challenge = {
   name: string;
-  age?: number;
+  // Add optional property age
 };
 
 // Your task: Ensure the following conditions
@@ -44,7 +44,7 @@ type Test = Expect<Equals<Challenge, { name: string; age?: number }>>;
 `,
   `// Intermediate Challenge 2: Readonly Properties
 type Challenge = {
-  readonly id: number;
+  // Add readonly property id
   name: string;
 };
 
@@ -53,7 +53,7 @@ type Test = Expect<Equals<Challenge, { readonly id: number; name: string }>>;
 `,
   `// Intermediate Challenge 3: Index Signatures
 type Challenge = {
-  [key: string]: number;
+  // Add index signature
 };
 
 // Your task: Ensure the following conditions
