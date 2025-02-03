@@ -97,7 +97,8 @@ type Test2 = Expect<Equals<Challenge<[boolean, number]>, [number, boolean]>>;
 type NotTest1 = Expect<Not<Equals<Challenge<[number, string]>, [number, string]>>>;
 type NotTest2 = Expect<Not<Equals<Challenge<[boolean, number]>, [boolean, number]>>>;`,
   `// Maestro Challenge 1: Union Types
-type Challenge<T> = T extends string | number ? "primitive" : "non-primitive";
+// Hint: Use a conditional type to check if T extends a primitive type (string, number, boolean, etc.) and return "primitive" or "non-primitive" accordingly.
+type Challenge<T> = unknown;
 
 // Your task: Ensure the following conditions
 type Test1 = Expect<Equals<Challenge<string>, "primitive">>;
