@@ -37,6 +37,7 @@ function App() {
       monacoInstance.languages.typescript.typescriptDefaults.addExtraLib(
         `declare type Equals<T, U> = (<G>() => G extends T ? 1 : 2) extends (<G>() => G extends U ? 1 : 2) ? true : false;
 declare type Expect<T extends true> = T; 
+declare type Not<T extends boolean> = T extends true ? false : true;
         `,
         "ts:filename/utils/types.d.ts"
       );
