@@ -43,6 +43,7 @@ type Challenge = {
 // Your task: Ensure the following conditions
 type Test = Expect<Equals<Challenge, { name: string; age?: number }>>;
 type NotTest = Expect<Not<Equals<Challenge, { name: string }>>>;`,
+
   `// Intermediate Challenge 2: Readonly Properties
 type Challenge = {
   name: string;
@@ -51,6 +52,18 @@ type Challenge = {
 // Your task: Ensure the following conditions
 type Test = Expect<Equals<Challenge, { readonly id: number; name: string }>>;
 type NotTest = Expect<Not<Equals<Challenge, { name: string }>>>;`,
+
+  `// Intermediate Challenge 4: Type Guards in Functions
+// Hint: Use a type guard function with the 'is' keyword to check if a value is of a specific type.
+type Challenge = unknown;
+
+// Your task: Ensure the following conditions
+type Test1 = Expect<Equals<ReturnType<Challenge>, boolean>>;
+type Test2 = Expect<Equals<Challenge("string"), true>>;
+type Test3 = Expect<Equals<Challenge(123), false>>;
+type NotTest1 = Expect<Not<Equals<Challenge("string"), false>>>;
+type NotTest2 = Expect<Not<Equals<Challenge(123), true>>>;`,
+
   `// Intermediate Challenge 3: Index Signatures
 type Challenge = {
 };
@@ -58,6 +71,7 @@ type Challenge = {
 // Your task: Ensure the following conditions
 type Test = Expect<Equals<Challenge, { [key: string]: number }>>;
 type NotTest = Expect<Not<Equals<Challenge, { a: number }>>>;`,
+
   `// Advanced Challenge 1: Conditional Types
 // Make the Challenge type return "string" if T is string, otherwise return "not string"
 type Challenge<T> = unknown;
@@ -67,6 +81,7 @@ type Test1 = Expect<Equals<Challenge<string>, "string">>;
 type Test2 = Expect<Equals<Challenge<number>, "not string">>;
 type NotTest1 = Expect<Not<Equals<Challenge<string>, "not string">>>;
 type NotTest2 = Expect<Not<Equals<Challenge<number>, "string">>>;`,
+
   `// Advanced Challenge 2: Mapped Types
 // Hint: Use a mapped type to iterate over the keys of T and conditionally transform the values based on their type.
 // You can use conditional types to check if a type extends another type.
