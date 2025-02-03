@@ -81,21 +81,23 @@ declare type Not<T extends boolean> = T extends true ? false : true;
   };
 
   return (
-    <div className="flex dark flex-col items-center p-4 text-white min-h-screen mt-10">
+    <div className="flex flex-col items-center p-4 text-white min-h-screen mt-10">
       {isChallengeCompleted && <Confetti />}
-      <h1 className="text-3xl font-bold mb-14">TypeScript Trainer</h1>
+      <h1 className="text-3xl font-bold mb-14 text-white">
+        TypeScript Trainer
+      </h1>
       <div className="flex flex-col items-center mb-4">
-        <label htmlFor="challenge-select" className="mb-2">
+        <label htmlFor="challenge-select" className="mb-2 text-white">
           Select Challenge:
         </label>
         <select
           id="challenge-select"
           value={currentChallengeIndex}
           onChange={(e) => switchChallenge(Number(e.target.value))}
-          className="p-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="p-2 bg-gray-800 border border-gray-700 rounded text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           {challenges.map((_, index) => (
-            <option key={index} value={index}>
+            <option key={index} value={index} className="text-black">
               Challenge {index + 1}
             </option>
           ))}
@@ -118,7 +120,7 @@ declare type Not<T extends boolean> = T extends true ? false : true;
       <div className="flex space-x-4">
         <button
           onClick={() => resetCodeToChallenge(currentChallengeIndex)}
-          className="p-2 bg-red-600 hover:bg-red-700 rounded"
+          className="p-2 bg-red-600 hover:bg-red-700 rounded text-white"
         >
           Reset
         </button>
@@ -127,7 +129,7 @@ declare type Not<T extends boolean> = T extends true ? false : true;
         <div className="flex flex-col gap-2 animate-fade-in">
           <div className="flex items-center mt-4">
             <FaCheckCircle className="text-green-500 mr-2" />
-            <span className="text-xl">Challenge Completed!</span>
+            <span className="text-xl text-white">Challenge Completed!</span>
           </div>
           <button
             onClick={() => {
@@ -135,7 +137,7 @@ declare type Not<T extends boolean> = T extends true ? false : true;
               setCurrentChallengeIndex(nextIndex);
               resetCodeToChallenge(nextIndex);
             }}
-            className="p-2 bg-blue-600 hover:bg-blue-700 rounded"
+            className="p-2 bg-blue-600 hover:bg-blue-700 rounded text-white"
           >
             Next Challenge
           </button>
