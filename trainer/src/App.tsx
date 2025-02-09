@@ -3,15 +3,20 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { compileCode } from "./util/compile";
 import Confetti from "react-confetti";
+import "bigiron.css/dist/dark.css";
 import { FaCheckCircle } from "react-icons/fa";
 
 import { challenges } from "./challenges/challenges"; // Import challenges
+import { useMediaQuery } from "react-responsive";
 
 function App() {
   const monacoInstance = useMonaco();
   const [currentChallengeIndex, setCurrentChallengeIndex] = useState(0);
   const [editors, setEditors] = useState([{ id: 1, code: challenges[0] }]);
   const [isChallengeCompleted, setIsChallengeCompleted] = useState(false);
+  const minWidth800 = useMediaQuery({
+    query: "(min-width: 1224px)",
+  });
 
   useEffect(() => {
     const savedEditors = editors.map((editor) => {
@@ -83,10 +88,10 @@ declare type Not<T extends boolean> = T extends true ? false : true;
   return (
     <div className="flex flex-col items-center p-4 text-white min-h-screen mt-10">
       {isChallengeCompleted && <Confetti />}
-      <h1 className="text-3xl font-bold mb-14 text-white">
+      <h1 className="text-3xl font-bold mb-14 text-white text-center">
         TypeScript Trainer
       </h1>
-      <div className="flex flex-col items-center mb-4">
+      <div className="flex flex-col items-center mb-4 w-full max-w-md">
         <label htmlFor="challenge-select" className="mb-2 text-white">
           Select Challenge:
         </label>
@@ -94,7 +99,7 @@ declare type Not<T extends boolean> = T extends true ? false : true;
           id="challenge-select"
           value={currentChallengeIndex}
           onChange={(e) => switchChallenge(Number(e.target.value))}
-          className="p-2 bg-gray-800 border border-gray-700 rounded text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="p-2 bg-gray-800 border border-gray-700 rounded text-white focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
         >
           {challenges.map((_, index) => (
             <option key={index} value={index} className="text-black">
@@ -103,30 +108,35 @@ declare type Not<T extends boolean> = T extends true ? false : true;
           ))}
         </select>
       </div>
-      <Editor
-        key={"key"}
-        height="40vh"
-        width="1000px"
-        theme="vs-dark"
-        defaultLanguage="typescript"
-        value={editors[0].code}
-        onChange={(value) => handleEditorChange(0, value)}
-        options={{
-          fontSize: 18,
-        }}
-        className="mb-4"
-        path={`/editor_${0}`}
-      />
-      <div className="flex space-x-4">
+      <div className="w-full max-w-6xl">
+        <Editor
+          key={"key"}
+          height="40vh"
+          width="100%"
+          theme="vs-dark"
+          defaultLanguage="typescript"
+          value={editors[0].code}
+          onChange={(value) => handleEditorChange(0, value)}
+          options={{
+            fontSize: minWidth800 ? 18 : 12,
+            minimap: {
+              enabled: false,
+            },
+          }}
+          className="mb-4"
+          path={`/editor_${0}`}
+        />
+      </div>
+      <div className="flex space-x-4 mb-4">
         <button
           onClick={() => resetCodeToChallenge(currentChallengeIndex)}
-          className="p-2 bg-red-600 hover:bg-red-700 rounded text-white"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
         >
           Reset
         </button>
       </div>
       {isChallengeCompleted && (
-        <div className="flex flex-col gap-2 animate-fade-in">
+        <div className="flex flex-col gap-2 animate-fade-in items-center">
           <div className="flex items-center mt-4">
             <FaCheckCircle className="text-green-500 mr-2" />
             <span className="text-xl text-white">Challenge Completed!</span>
