@@ -1,4 +1,7 @@
-export const challenges = [
+import { intermediateGeneratedChallenges } from "./intermediateGeneratedChallenges";
+
+// Basic challenges for beginners
+const basicChallenges = [
   `type Challenge = {
   a: number;
 };
@@ -72,7 +75,10 @@ type Challenge = {
 // Your task: Ensure the following conditions
 type Test = Expect<Equals<Challenge, { [key: string]: number }>>;
 type NotTest = Expect<Not<Equals<Challenge, { a: number }>>>;`,
+];
 
+// Advanced challenges
+const advancedChallenges = [
   `// Advanced Challenge 1: Conditional Types
 // Make the Challenge type return "string" if T is string, otherwise return "not string"
 type Challenge<T> = unknown;
@@ -82,7 +88,6 @@ type Test1 = Expect<Equals<Challenge<string>, "string">>;
 type Test2 = Expect<Equals<Challenge<number>, "not string">>;
 type NotTest1 = Expect<Not<Equals<Challenge<string>, "not string">>>;
 type NotTest2 = Expect<Not<Equals<Challenge<number>, "string">>>;`,
-
   `// Advanced Challenge 2: Mapped Types
 // Hint: Use a mapped type to iterate over the keys of T and 
 // conditionally transform the values based on their type.
@@ -147,4 +152,11 @@ type Test1 = Expect<Equals<Challenge<{ a: string; b: string }>, string>>;
 type Test2 = Expect<Equals<Challenge<{ a: number; b: number }>, number>>;
 type NotTest1 = Expect<Not<Equals<Challenge<{ a: string; b: string }>, number>>>;
 type NotTest2 = Expect<Not<Equals<Challenge<{ a: number; b: number }>, string>>>;`,
+];
+
+// Combine all challenges
+export const challenges = [
+  ...basicChallenges,
+  ...intermediateGeneratedChallenges,
+  ...advancedChallenges,
 ];
