@@ -278,6 +278,7 @@ declare type Not<T extends boolean> = T extends true ? false : true;
             minimap: {
               enabled: false,
             },
+            lineNumbers: minWidth800 ? 'on' : 'off',
           }}
           className="mb-4"
           path={`/editor_${currentChallengeIndex}`}
