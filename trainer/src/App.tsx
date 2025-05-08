@@ -264,7 +264,7 @@ declare type Not<T extends boolean> = T extends true ? false : true;
             </div>
           )}
       </div>
-      <div className="w-full max-w-6xl">
+      <div className="w-full lg:max-w-6xl">
         <Editor
           key={"key"}
           height="40vh"
@@ -278,7 +278,7 @@ declare type Not<T extends boolean> = T extends true ? false : true;
             minimap: {
               enabled: false,
             },
-            lineNumbers: minWidth800 ? 'on' : 'off',
+            lineNumbers: minWidth800 ? "on" : "off",
           }}
           className="mb-4"
           path={`/editor_${currentChallengeIndex}`}
